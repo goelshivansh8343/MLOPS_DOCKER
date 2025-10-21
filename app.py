@@ -1,15 +1,9 @@
-import pandas as pd
-import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
+from flask import Flask
+app = Flask(__name__)
 
-import warnings
-warnings.filterwarnings("ignore")
+@app.route('/')
+def home():
+    return "Hello from Docker!"
 
-from sklearn.datasets import load_iris
-data=load_iris()
-x=data.data
-y=data.target
-df=pd.DataFrame(x)
-df["Target"]=y
-print(df.isnull().sum())
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
